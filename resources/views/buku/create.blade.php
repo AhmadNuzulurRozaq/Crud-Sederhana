@@ -27,7 +27,7 @@
             </div>
             <div class="item-create">
               <label>Tahun Terbit</label>
-              <select name="tahunTerbit" id="listTahun" required>
+              <select id="listTahun" name="tahunTerbit" required>
                 <option value="">--- PILIH TAHUN TERBIT ---</option>
               </select>
             </div>
@@ -40,7 +40,7 @@
     </main>
   </body>
   <script>
-    const dropdown = getElementById('listTahun');
+    const dropdown = document.getElementById('listTahun');
     const tahunSekarang = new Date().getFullYear();
     const tahunAwal = 1900;
     
@@ -48,7 +48,7 @@
       const opsi = document.createElement('option');
       opsi.value = i;
       opsi.text = i;
-      dropdown.appendChild('opsi');
+      dropdown.appendChild(opsi);
     }
   </script>
 </html>
