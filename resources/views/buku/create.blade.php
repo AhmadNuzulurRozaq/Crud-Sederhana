@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TAMBAH DATA BUKU</title>
+    <title>Tambah Data Buku</title>
   </head>
   <body>
     <main>
       <h1>TAMBAH DATA BUKU</h1>
       <span>TAMBAH DATA BUKU DENGAN SANGAT MUDAH</span>
       <hr>
+      <span>Masukkan data buku dibawah ini. Pastikan data yang di input sudah benar.</span>
       <fieldset>
-        <span>Masukkan data buku dibawah ini. Pastikan data yang di input sudah benar.</span>
-        <form action="{{ route('buku.store') }}" method="POST">
+        <form action="{{ route('buku.store') }}" method="POST" onsubmit="return confirm('Konfirmasi tambah data buku baru ?')">
           @csrf
           <div class="form-create">
             <div class="item-create">
@@ -28,8 +28,12 @@
             <div class="item-create">
               <label>Tahun Terbit</label>
               <select id="listTahun" name="tahunTerbit" required>
-                <option value="">--- PILIH TAHUN TERBIT ---</option>
+                <option value="" disabled selected>--- PILIH TAHUN TERBIT ---</option>
               </select>
+            </div>
+            <div class="item-create">
+              <label>Deskripsi Buku</label>
+              <textarea name="deskripsiBuku" id="" cols="30" rows="10" required></textarea>
             </div>
             <div class="sendButton">
               <button type="submit">KIRIM</button>

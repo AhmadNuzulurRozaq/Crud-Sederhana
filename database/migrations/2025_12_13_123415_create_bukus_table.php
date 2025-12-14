@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('penulisBuku');
             $table->string('penerbitBuku');
             $table->year('tahunTerbit');
+            $table->text('deskripsiBuku');
             $table->timestamps();
         });
     }

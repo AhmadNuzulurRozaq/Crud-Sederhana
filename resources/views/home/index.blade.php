@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>APLIKASI DATA BUKU</title>
+    <title>Aplikasi Data Buku</title>
   </head>
   <body>
     <main>

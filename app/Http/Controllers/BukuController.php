@@ -12,8 +12,9 @@ class BukuController extends Controller
      */
     public function index()
     {
-        $bukus = Buku::all();
-        return view('buku.index', compact('bukus'));
+        $buku = Buku::all();
+        $total_buku = Buku::count();
+        return view('buku.index', compact('buku','total_buku'));
     }
 
     /**
@@ -34,6 +35,7 @@ class BukuController extends Controller
           'penulisBuku' => 'required|min:3',
           'penerbitBuku' => 'required|min:3',
           'tahunTerbit' => 'required',
+          'deskripsiBuku' => 'required',
         ]);
         
         Buku::create([
@@ -41,40 +43,62 @@ class BukuController extends Controller
           'penulisBuku' => $request->penulisBuku,
           'penerbitBuku' => $request->penerbitBuku,
           'tahunTerbit' => $request->tahunTerbit,
+          'deskripsiBuku' => $request->deskripsiBuku,
         ]);
         
-        return redirect()->route('buku.index');
+        return redirect()->route('buku.index')->with('success', 'Data buku berhasil ditambahkan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Buku $buku)
+    public function show($id)
     {
-        //
+        $buku = Buku::findOrFail($id);
+        return view('buku.show', compact('buku'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Buku $buku)
+    public function edit($id)
     {
-        //
+        $buku = Buku::findOrFail($id);
+        return view('buku.edit', compact('buku'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Buku $buku)
-    {
-        //
+    public function update(Request $request, $id)
+    {   
+        $buku = Buku::findOrFail($id);
+        $request->validate([
+          'judulBuku' => 'required|min:3',
+          'penulisBuku' => 'required|min:3',
+          'penerbitBuku' => 'required|min:3',
+          'tahunTerbit' => 'required',
+          'deskripsiBuku' => 'required',
+        ]);
+
+        $buku->update([
+            'judulBuku' => $request->judulBuku,
+            'penulisBuku' => $request->penulisBuku,
+            'penerbitBuku' => $request->penerbitBuku,
+            'tahunTerbit' => $request->tahunTerbit,
+            'deskripsiBuku' => $request->deskripsiBuku,
+        ]);
+
+        return redirect()->route('buku.index')->with('success', 'Data buku berhasil di update!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Buku $buku)
+    public function destroy($id)
     {
-        //
+        $buku = Buku::findOrFail($id);
+        $buku->delete();
+        return redirect()->route('buku.index')->with('success', 'Data berhasil dihapus!');
     }
 }
