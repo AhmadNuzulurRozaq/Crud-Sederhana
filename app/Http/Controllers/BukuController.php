@@ -10,6 +10,7 @@ class BukuController extends Controller
     /**
      * Display a listing of the resource.
      */
+     // Fungsi menampilkan data
     public function index()
     {
         $buku = Buku::all();
@@ -20,6 +21,7 @@ class BukuController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+     //Fungsi menambah data
     public function create()
     {
         return view('buku.create');
@@ -28,6 +30,7 @@ class BukuController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+     // Fungsi mengirim data
     public function store(Request $request)
     {
         $request->validate([
@@ -52,6 +55,7 @@ class BukuController extends Controller
     /**
      * Display the specified resource.
      */
+     // Fungsi menampilkan detail data
     public function show($id)
     {
         $buku = Buku::findOrFail($id);
@@ -61,6 +65,7 @@ class BukuController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
+     // Fungsi mengedit data
     public function edit($id)
     {
         $buku = Buku::findOrFail($id);
@@ -70,6 +75,7 @@ class BukuController extends Controller
     /**
      * Update the specified resource in storage.
      */
+     // Fungsi mengupdate data
     public function update(Request $request, $id)
     {   
         $buku = Buku::findOrFail($id);
@@ -95,6 +101,7 @@ class BukuController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+     //Fungsi menghapus data
     public function destroy($id)
     {
         $buku = Buku::findOrFail($id);
